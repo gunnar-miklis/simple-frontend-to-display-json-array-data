@@ -1,5 +1,4 @@
-## Display JSON-Array
-### simple frontend to display data
+## Display JSON-Array: simple frontend to display data
 
 1. note the formatting in the example_data.json file.
 2. click "select file".
