@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="Gunnar Miklis">
+	<meta name="keywords" content="simple, frontend, display, json, array, data, table">
+	<meta name="description" content="simple frontend to display json array data">
+	<title>Display JSON-Array Data</title>
+	<style>
+		/* GENERAL --------------------------------- */
+		* {
+			box-sizing: border-box;
+		}
+		html,
+		body {
+			margin: 0;
+			padding: 0;
+		}
+		body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			color: #333;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+		h1 {
+			margin-top: 50px;
+			margin-bottom: 10px;
+			text-align: center;
+		}
+		p {
+			margin: 0;
+		}
+		a {
+			text-decoration: none;
+			color: #333;
+		}
+		a:hover {
+			text-decoration: underline;
+		}
+		main {
+			min-height: 100vh;
+			max-width: 90%;
+			padding: 10px 5%;
+			box-shadow: 0 0 10px rgba(0,0,0,0.2);
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			gap: 20px;
+		}
+		header {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+		footer {
+			display: flex;
+			justify-content: center;
+			margin-bottom: 25px;
+		}
+		footer a {
+			font-size: 14px;
+			display: flex;
+			align-items: center;
+		}
+		footer img {
+			height: 14px;
+			margin-right: 5px;
+		}
+
+		/* FILE INPUT --------------------------------- */
+		label {
+			display: inline-block;
+			margin-top: 60px;
+			padding: 15px;
+			background-color: #333;
+			border: 1px solid #333;
+			border-radius: 5px;
+			font-weight: 500;
+			color: white;
+			cursor: pointer;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+		}
+		label:hover {
+			background-color: white;
+			color: #333;
+		}
+		input[type='file'] {
+			display: none;
+		}
+
+		/* DISPLAY DATA --------------------------------- */
+		.responsive-table {
+			overflow-x: auto;
+			margin-bottom: 50px;
+		}
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			border-spacing: 0;
+			font-size: 1.1em;
+			color: #333;
+		}
+		table tr:hover {
+			background-color: rgba(200, 200, 200, 0.2);
+		}
+		table th {
+			padding: 15px;
+			font-weight: 500;
+		}
+		table td {
+			padding: 10px;
+			border-top: 1px solid #333;
+			border-bottom: 1px solid #333;
+		}
+		table thead,
+		table tbody {
+			border-top: 2px solid #333;
+			border-bottom: 2px solid #333;
+		}
+		table thead {
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+		}
+		@media only screen and ( max-width: 768px ) {
+			main {
+				max-width: 100%;
+			}
+		}
+	</style>
+</head>
+<body>
+	<main>
+
+		<header>
+			<h1>Display JSON-Array</h1>
+			<p>simple frontend to display data</p>
+
+			<!-- FILE INPUT --------------------------------- -->
+			<label for="insertedFile">
+				Select File
+				<input id="insertedFile" type="file" />
+			</label>
+		</header>
+
+		<!-- DISPLAY DATA --------------------------------- -->
+		<section class="responsive-table">
+			<table>
+				<thead></thead>
+				<tbody></tbody>
+			</table>
+		</section>
+
+		<footer>
+			<a href="https://github.com/gunnar-miklis" target="_blank">
+				<img src="https://github.githubassets.com/favicons/favicon.svg" />
+				github.com/gunnar-miklis
+			</a>
+		</footer>
+
+	</main>
+
+	<script type="text/javascript">
+		// FILE INPUT ---------------------------------
+		const inputField = document.getElementById( 'insertedFile' );
+		inputField.addEventListener( 'change', ( event ) => {
+			const insertedFile = event.target.files[0];
+			const reader = new FileReader();
+			reader.addEventListener( 'load', ( event ) => {
+				const jsonData = JSON.parse( event.target.result, function (key, value) {
+					// validation
+					if ( value === "" ) return "-"
+					else return value;
+				} );
+				
+				// DISPLAY DATA ---------------------------------
+				// table headers
+				const tr = document.createElement( 'tr' );
+				Object.keys( jsonData[0] ).forEach( ( key ) => {
+					const th = document.createElement( 'th' );
+					th.innerText = key[0].toUpperCase() + key.slice( 1 );
+					tr.appendChild( th );
+				} );
+				document.querySelector( 'thead' ).appendChild( tr );
+
+				// table content
+				for ( const entry of jsonData ) {
+					const tr = document.createElement( 'tr' );
+					Object.values( entry ).forEach( ( value ) => {
+						const td = document.createElement( 'td' );
+						td.innerText = value;
+						tr.appendChild( td );
+					} );
+					document.querySelector( 'tbody' ).appendChild( tr );
+				}
+			} );
+			reader.readAsText( insertedFile );
+		} );
+	</script>
+
+</body>
+
+</html>

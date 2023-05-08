@@ -1,0 +1,70 @@
+[	
+	{
+		"id":1,
+		"name": "magenta",
+		"type": "color",
+		"hex": "#ff00ff",
+		"isVisible": false,
+		"rgb": "(255, 0, 255)",
+		"symbolizes": "kindness, change, harmony",
+		"effect": "supports, inspires, balances",
+		"positive": "understanding, loving, cheery",
+		"negative": ""
+	},
+	{
+		"id": 2,
+		"name": "cyan",
+		"type": "color",
+		"hex": "#00ffff",
+		"isVisible": true,
+		"symbolizes": "",
+		"effect": "",
+		"positive": "",
+		"negative": ""
+	},
+	{
+		"id": 3,
+		"name": "yellow",
+		"type": "color",
+		"hex": "#ffff00",
+		"isVisible": true,
+		"symbolizes": null,
+		"effect": null,
+		"positive": null,
+		"negative": null
+	},
+	{
+		"id": 4,
+		"name": "red",
+		"type": "color",
+		"hex": "#ff0000",
+		"isVisible": true,
+		"rgb": "",
+		"symbolizes": "action, energy, passion",
+		"effect": "attention, motivates, stimulates",
+		"positive": "",
+		"negative": "anger, danger, aggression"
+	},
+	{
+		"id": 5,
+		"name": "green",
+		"type": "color",
+		"hex": "#00ff00",
+		"isVisible": false,
+		"symbolizes": "",
+		"effect": "",
+		"positive": "",
+		"negative": ""
+	},
+	{
+		"id": 6,
+		"name": "blue",
+		"type": "color",
+		"hex": "#0000ff",
+		"isVisible": false,
+		"symbolizes": "",
+		"effect": "",
+		"positive": "",
+		"negative": ""
+	}
+]
