@@ -6,4 +6,4 @@
 
 ---
 
-![image](https://user-images.githubusercontent.com/127124823/236772503-927f7f96-0fd4-4a07-98b6-9bd9fc28b356.png)
+![image](https://user-images.githubusercontent.com/127124823/236772503-927f7f96-0fd4-4a07-98b6-9bd9fc28b356.png | width=60)
